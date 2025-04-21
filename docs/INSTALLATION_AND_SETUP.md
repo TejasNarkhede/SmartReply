@@ -6,7 +6,6 @@
 - Java 17 or higher
 - Node.js 16 or higher
 - npm 7 or higher
-- Chrome browser (latest version)
 - Git
 
 ### Required Accounts
@@ -58,7 +57,15 @@ cd ../smart-reply-frontend
 npm install
 ```
 
-### 3. Run the Frontend
+### 3. Required Dependencies
+The frontend uses the following key dependencies:
+- @mui/material (Material UI)
+- @emotion/react
+- @emotion/styled
+- axios
+- react
+
+### 4. Run the Frontend
 ```bash
 npm run dev
 ```
@@ -69,13 +76,6 @@ npm run dev
 1. Open Chrome and navigate to `chrome://extensions/`
 2. Enable "Developer mode" in the top right
 3. Click "Load unpacked" and select the `smart-reply-extension` directory
-
-### 2. Required Permissions
-The extension requires the following permissions:
-- Gmail access
-- Storage access
-- Web navigation
-
 
 ## Running the Complete System
 
@@ -90,11 +90,6 @@ cd smart-reply-backend
 cd ../smart-reply-frontend
 npm run dev
 ```
-
-### 3. Enable Extension
-- Ensure the Chrome extension is loaded and enabled
-- Open Gmail in a new tab
-- The SmartReply icon should appear in the Gmail interface
 
 ## Common Issues & Fixes
 
@@ -112,14 +107,11 @@ npm run dev
 ### Frontend Issues
 1. **API Connection Failed**
    - Solution: Verify backend is running and API URL is correct
-   - Check API key in frontend `.env` file
+   - Check CORS configuration in backend
 
-### Extension Issues
-1. **Extension Not Loading**
-   - Solution: Check Chrome extension settings and reload
-
-2. **Gmail Integration Not Working**
-   - Solution: Verify permissions and reload the extension
+2. **Material UI Components Not Loading**
+   - Solution: Verify all MUI dependencies are installed correctly
+   - Check for version conflicts
 
 ## Troubleshooting
 For additional help:

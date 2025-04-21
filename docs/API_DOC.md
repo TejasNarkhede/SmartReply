@@ -5,7 +5,7 @@ The SmartReply API provides endpoints for generating AI-powered email responses 
 
 ## Base URL
 ```
-http://localhost:8080/api/v1
+http://localhost:8080/api
 ```
 
 ## Authentication
@@ -13,36 +13,32 @@ Currently, the API does not require authentication for local development. For pr
 
 ## Endpoints
 
-### Generate AI Reply
+### Generate Email Reply
 ```
-POST /generate-reply
+POST /email/reply
 ```
 
 #### Request
 ```json
 {
   "emailContent": "string",
-  "context": "string",
-  "tone": "string" // optional
+  "tone": "string" // optional values: "professional", "casual", "friendly"
 }
 ```
 
 #### Response
 ```json
 {
-  "reply": "string",
-  "confidence": "number",
-  "timestamp": "string"
+  "reply": "string"
 }
 ```
 
 #### Example
 ```bash
-curl -X POST http://localhost:8080/api/v1/generate-reply \
+curl -X POST http://localhost:8080/api/email/reply \
   -H "Content-Type: application/json" \
   -d '{
     "emailContent": "Hello, I would like to schedule a meeting next week.",
-    "context": "business",
     "tone": "professional"
   }'
 ```
@@ -62,18 +58,11 @@ curl -X POST http://localhost:8080/api/v1/generate-reply \
 ### Error Response Format
 ```json
 {
-  "status": "error",
-  "message": "string",
-  "code": "number",
-  "timestamp": "string"
+  "error": "string"
 }
 ```
 
 ### Common Error Codes
 - 400: Bad Request
-- 401: Unauthorized
-- 403: Forbidden
-- 404: Not Found
-- 429: Too Many Requests (Rate limit exceeded)
 - 500: Internal Server Error
 
