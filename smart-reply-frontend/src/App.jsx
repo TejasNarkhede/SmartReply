@@ -12,8 +12,8 @@ import {
   Button,
   CircularProgress,
 } from "@mui/material";
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import axios from "axios";
-
 
 function App() {
   const [emailContent, setEmailContent] = useState("");
@@ -24,12 +24,19 @@ function App() {
 
   const handleSubmit = async () => {
     setLoading(true);
-    setError('');
+    setError("");
     try {
-      const response = await axios.post("http://localhost:8080/api/email/reply", {emailContent, tone});
-      setGeneratedReply(typeof response.data === 'string' ? response.data : JSON.stringify(response.data));
+      const response = await axios.post(
+        "http://localhost:8080/api/email/reply",
+        { emailContent, tone }
+      );
+      setGeneratedReply(
+        typeof response.data === "string"
+          ? response.data
+          : JSON.stringify(response.data)
+      );
     } catch (error) {
-      setError('Failed to generate email reply. Please try again')
+      setError("Failed to generate email reply. Please try again!");
       console.error(error);
     } finally {
       setLoading(false);
@@ -37,9 +44,15 @@ function App() {
   };
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography variant="h3" component="h1" gutterBottom>
-        Email Reply Generator
+    <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Typography
+        variant="h3"
+        component="h1"
+        gutterBottom
+        sx={{ textAlign: "center", display : "flex", alignItems : "center"}}
+      >
+        <AutoAwesomeIcon sx={{fontSize: 40, px:1}}/>Smart Reply
+        {/* <Typography variant="h5">Smart Email Reply Assistant</Typography> */}
       </Typography>
       <Box sx={{ mx: 3 }}>
         <TextField
@@ -47,7 +60,7 @@ function App() {
           multiline
           rows={6}
           variant="outlined"
-          label="Original Email Content"
+          label="Paste Your Email Content"
           value={emailContent || ""}
           onChange={(e) => setEmailContent(e.target.value)}
           sx={{ mb: 2 }}
@@ -72,18 +85,18 @@ function App() {
           disabled={!emailContent || loading}
           fullWidth
         >
-          {loading ? <CircularProgress size={24} /> : "Generate Reply!"}
+          {loading ? <CircularProgress size={24} /> : "Generate AI Reply!"}
         </Button>
       </Box>
 
       {error && (
-        <Typography color="error" sx={{mb:2}}>
+        <Typography color="error" variant="h6" sx={{ mt: 2, textAlign : "center"}}>
           {error}
         </Typography>
       )}
 
       {generatedReply && (
-        <Box sx={{mt:3}}>
+        <Container maxWidth="lg" sx={{ py: 4 }}>
           <Typography variant="h6" gutterBottom>
             Generated Reply:
           </Typography>
@@ -93,16 +106,17 @@ function App() {
             rows={6}
             variant="outlined"
             value={generatedReply || ""}
-            inputProps={{ readOnly: true}}
-          >
-          </TextField>
+            inputProps={{ readOnly: true }}
+          ></TextField>
           <Button
-          variant="outlined" sx={{mt:2}}
-          onClick={()=> navigator.clipboard.writeText(generatedReply)}
-          >Copy To Clipboard</Button>
-        </Box>
+            variant="outlined"
+            sx={{ mt: 2 }}
+            onClick={() => navigator.clipboard.writeText(generatedReply)}
+          >
+            Copy To Clipboard
+          </Button>
+        </Container>
       )}
-
     </Container>
   );
 }

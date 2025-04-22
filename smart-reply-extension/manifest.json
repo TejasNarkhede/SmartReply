@@ -16,9 +16,6 @@
       "js": [
         "content.js"
       ],
-      "css": [
-        "content.css"
-      ],
       "matches": [
         "*://mail.google.com/*"
       ],

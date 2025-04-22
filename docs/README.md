@@ -1,10 +1,10 @@
 # SmartReply - AI-Powered Email Reply Assistant
 
 ## Project Description
-SmartReply is a smart email assistant that helps users craft better email responses using AI. It provides both a web interface and a Chrome extension for Gmail integration, powered by Google's Gemini AI model.
+SmartReply is a smart email reply assistant that helps users craft better email responses using AI. It provides both a web interface and a Chrome extension for Gmail integration, powered by Google's Gemini AI model.
 
 ## Demo / Screenshots
-[Add screenshots/demo GIFs here]
+
 
 ## Key Features
 - AI-powered email response generation
