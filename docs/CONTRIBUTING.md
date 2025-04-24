@@ -68,9 +68,3 @@ When opening an issue:
 3. Update documentation if needed
 4. Provide a clear description of changes
 5. Reference related issues
-
-## Contact / Community
-
-For questions or discussions:
-- [Add your preferred contact method]
-- [Add community chat link if applicable] 
